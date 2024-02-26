@@ -61,14 +61,13 @@ onMounted( () => {
 <template>
     <div class="Main h-min w-full z-10 flex justify-center gap-6">
     <draggable
-        v-if="myArray.length > 0"
         v-model="myArray"
         group="people"
         @start="drag=true; clearTrash()"
         @end="drag=false; saveToLocalStorage()"
         item-key="id"
         animation="200"
-        class="flex flex-row gap-6"
+        :class="myArray.length > 0 ? 'flex flex-row gap-6' : 'hidden'"
     >
       <template #item="{ element }">
         <favorite-button @click="openInThisTab(element.name)" @mousedown.middle="openInNewTab(element.name)">
@@ -82,6 +81,7 @@ onMounted( () => {
       <div v-if="drag" class="flex justify-center items-center bg-red-500 bg-opacity-30 rounded-md h-24 w-full absolute z-10 bottom-0 right-0">
         <p class="text-white text-2xl absolute text-opacity-60">Удалить</p>
         <draggable
+            v-if="drag"
             v-model="trash"
             group="people"
             @start="drag=true"
