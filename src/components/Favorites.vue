@@ -61,6 +61,7 @@ onMounted( () => {
 <template>
     <div class="Main h-min w-full z-10 flex justify-center gap-6">
     <draggable
+        v-if="myArray.length > 0"
         v-model="myArray"
         group="people"
         @start="drag=true; clearTrash()"
@@ -74,7 +75,7 @@ onMounted( () => {
           <img class="select-none size-5" :src="'https://s2.googleusercontent.com/s2/favicons?domain_url=' + element.name" :alt="element.name">
         </favorite-button>
       </template>
-      </draggable>
+    </draggable>
       <AddDialogue @add="addToLocalStorage" />
     </div>
     <transition>
