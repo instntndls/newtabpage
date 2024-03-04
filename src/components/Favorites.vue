@@ -62,8 +62,8 @@ onMounted( () => {
         :class="myArray.length > 0 ? 'flex flex-row gap-6' : 'hidden'"
     >
       <template #item="{ element }">
-        <favorite-button>
-          <a :href="element.name" target="_blank" class="select-none size-5">
+        <favorite-button >
+          <a :href="element.name" target="_self" class="select-none size-full flex justify-center items-center">
             <img class="select-none size-5" :src="'https://s2.googleusercontent.com/s2/favicons?domain_url=' + element.name" :alt="element.name">
           </a>
         </favorite-button>
