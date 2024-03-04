@@ -1,10 +1,9 @@
 <script setup>
 
 import draggable from 'vuedraggable'
-import {inject, onMounted, ref} from "vue";
+import { onMounted, ref } from "vue";
 import FavoriteButton from "@/components/FavoriteButton.vue";
 import AddDialogue from "@/components/AddDialogue.vue";
-import {handler} from "tailwindcss-animate";
 
 const myArray = ref([])
 const trash = ref([])
@@ -41,13 +40,6 @@ const clearTrash = () => {
   trash.value = null
 }
 
-const openInNewTab = (link) => {
-  window.open(link, '_blank')
-}
-const openInThisTab = (link) => {
-  window.location.href = link
-}
-
 onMounted( () => {
   clearTrash()
   getFromLocalStorage()
@@ -70,8 +62,10 @@ onMounted( () => {
         :class="myArray.length > 0 ? 'flex flex-row gap-6' : 'hidden'"
     >
       <template #item="{ element }">
-        <favorite-button @click="openInThisTab(element.name)" @mousedown.middle="openInNewTab(element.name)">
-          <img class="select-none size-5" :src="'https://s2.googleusercontent.com/s2/favicons?domain_url=' + element.name" :alt="element.name">
+        <favorite-button>
+          <a :href="element.name" target="_blank" class="select-none size-5">
+            <img class="select-none size-5" :src="'https://s2.googleusercontent.com/s2/favicons?domain_url=' + element.name" :alt="element.name">
+          </a>
         </favorite-button>
       </template>
     </draggable>
