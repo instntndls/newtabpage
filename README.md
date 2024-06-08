@@ -1,6 +1,9 @@
 # newtabpage
 
-This template should help get you started developing with Vue 3 in Vite.
+Basic custom "new tab" page made with Vue 3 in Vite.
+
+| ![alt text](https://github.com/instntndls/newtabpage/blob/master/src/assets/screenshots/instntndls.github.io_newtabpage_.png?raw=true) |
+| - |
 
 ## Recommended IDE Setup
 
